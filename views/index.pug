@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  a(href="/create") create
+  h3 Music List
+  table.table
+    tr
+      th name
+      th artist
+      th url
+      th type
+      th attribute
+    each music in musics
+      tr
+        td
+          a(href=`/musics/${music.name}`) #{music.name}
+        td #{music.artist}
+        td
+          - var youtubeLen = music.url.split('youtu').length
+          - var soundcloudLen = music.url.split('soundcloud').length
+          - var url = music.url.replace(/\s+/g, '')
+          if youtubeLen > 1
+            a(href=`${url}`) YouTube
+          else if soundcloudLen > 1
+            a(href=`${url}`) SoundCloud
+          else
+            a(href=`${url}`) URL
+        td #{music.type}
+        td #{music.attribute}

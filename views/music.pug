@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 #{music.name}
+  p Artist: #{music.artist || '-'}
+  p Url: #{music.url || '-'}
+  p Type: #{music.type || '-'}
+  p Attribute: #{music.attribute || '-'}
+  p UpdatedAt: #{music.updatedAt}
+  p note: #{music.note || '-'}
