@@ -4,15 +4,18 @@ const Music = require('../models/music');
 const dateFormat = require('dateFormat');
 
 router.get('/', (req, res, next) => {
-  res.render('create', { title: 'Create' });
+  res.render('create', { title: 'CB:Create' });
 });
 
 router.post('/', (req, res, next) => {
   const updatedAt = dateFormat(new Date(), 'mmm dd yyyy, HH:MM:ss');
+  const url = req.body.url.includes('https') ?
+    req.body.url :
+    'https://www.' + req.body.url;
   Music.create({
     name: req.body.name || 'NAME',
     artist: req.body.artist,
-    url: req.body.url,
+    url: url,
     type: req.body.type,
     attribute: req.body.attribute,
     updatedAt: updatedAt,

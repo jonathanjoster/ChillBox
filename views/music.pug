@@ -1,10 +1,25 @@
 extends layout
 
 block content
-  h1 #{music.name}
-  p Artist: #{music.artist || '-'}
-  p Url: #{music.url || '-'}
-  p Type: #{music.type || '-'}
-  p Attribute: #{music.attribute || '-'}
-  p UpdatedAt: #{music.updatedAt}
-  p note: #{music.note || '-'}
+  .data-wrapper
+    h1 #{music.name}
+    a(href=`/musics/${music.name}/edit`) Edit
+    br
+    a(href="/") Home
+    p Artist: #{music.artist || '-'}
+    p Url: 
+      - var url = music.url
+      if url
+        a(href=url) #{url}
+      else
+        | -
+    p Type: #{music.type || '-'}
+    p Attribute: #{music.attribute || '-'}
+    p UpdatedAt: #{music.updatedAt}
+    p note: #{music.note || '-'}
+
+  if url
+    .mov-wrapper
+      iframe(data-src=url frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+
+  script(src="/javascripts/script.js")

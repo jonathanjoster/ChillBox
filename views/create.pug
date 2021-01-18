@@ -4,25 +4,25 @@ block content
   h1 Register Music
   form.pure-form(method="post" action="/create")
     .pure-g
-      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-3
-        p name
-        input(type="text" name="name" required).pure-input-rounded
-      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-3
-        p artist
-        input(type="text" name="artist").pure-input-rounded
-      .pure-u-1.pure-u-lg-1-3
-        p url
-        input(type="text" name="url").pure-input-rounded
+      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-4
+        .input-wrapper
+          input(type="text" name="name" required placeholder="name" autocomplete="off").pure-input-rounded
+      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-4
+        .input-wrapper
+          input(type="text" name="artist" placeholder="artist" autocomplete="off").pure-input-rounded
+      .pure-u-1.pure-u-lg-1-2
+        .input-wrapper
+          input(type="text" name="url" size="40" placeholder="url" autocomplete="off").pure-input-rounded
       .pure-u-1.pure-u-sm-1-2
-        p type
-        .option-box
+        .radio-wrapper
+          p type
           input(type="radio" name="type" value="instrumental" checked)#_instrumental
           label(for="_instrumental").pure-radio Instrumental
           input(type="radio" name="type" value="song")#_song
           label(for="_song").pure-radio Song
       .pure-u-1.pure-u-sm-1-2
-        p attribute
-        .option-box
+        .radio-wrapper
+          p attribute
           input(type="radio" name="attribute" value="none" checked)#_none
           label(for="_none").pure-checkbox None
           input(type="radio" name="attribute" value="comfortable")#_comfortable
@@ -30,6 +30,6 @@ block content
           input(type="radio" name="attribute" value="dark")#_dark
           label(for="_dark").pure-radio Dark
       .pure-u-1
-        p note
-        textarea(name="note")
+        .text-wrapper
+          textarea(name="note" placeholder="note")
       button(type="submit").pure-button.pure-button-primary Put Away!

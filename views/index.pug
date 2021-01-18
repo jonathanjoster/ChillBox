@@ -5,27 +5,23 @@ block content
   p Welcome to #{title}
   a(href="/create") create
   h3 Music List
-  table.table
-    tr
-      th name
-      th artist
-      th url
-      th type
-      th attribute
+  .pure-g
     each music in musics
-      tr
-        td
+      .pure-u-1.pure-g.music-wrapper
+        p.pure-u-1.pure-u-sm-1-2.pure-u-md-1-3
           a(href=`/musics/${music.name}`) #{music.name}
-        td #{music.artist}
-        td
-          - var youtubeLen = music.url.split('youtu').length
-          - var soundcloudLen = music.url.split('soundcloud').length
-          - var url = music.url.replace(/\s+/g, '')
-          if youtubeLen > 1
-            a(href=`${url}`) YouTube
-          else if soundcloudLen > 1
-            a(href=`${url}`) SoundCloud
+        p.pure-u-1-2.pure-u-sm-1-2.pure-u-md-1-6 #{music.artist}
+        p.pure-u-1-2.pure-u-sm-1-3.pure-u-md-1-6
+          if music.url.includes('youtube')
+            a(href=music.url) YouTube
+          else if music.url.includes('soundcloud')
+            a(href=music.url) SoundCloud
           else
-            a(href=`${url}`) URL
-        td #{music.type}
-        td #{music.attribute}
+            a(href=music.url) URL
+        p.pure-u-1-2.pure-u-sm-1-3.pure-u-md-1-6 #{music.type}
+        p.pure-u-1-2.pure-u-sm-1-3.pure-u-md-1-6
+          if music.attribute === 'comfortable'
+            span.comfortable #{music.attribute}
+          else if music.attribute
+            span.dark #{music.attribute}
+
