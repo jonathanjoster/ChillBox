@@ -1,35 +1,38 @@
 extends layout
 
 block content
-  h1 Register Music
-  form.pure-form(method="post" action="/create")
-    .pure-g
-      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-4
-        .input-wrapper
-          input(type="text" name="name" required placeholder="name" autocomplete="off").pure-input-rounded
-      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-4
-        .input-wrapper
-          input(type="text" name="artist" placeholder="artist" autocomplete="off").pure-input-rounded
-      .pure-u-1.pure-u-lg-1-2
-        .input-wrapper
-          input(type="text" name="url" size="40" placeholder="url" autocomplete="off").pure-input-rounded
-      .pure-u-1.pure-u-sm-1-2
-        .radio-wrapper
-          p type
-          input(type="radio" name="type" value="instrumental" checked)#_instrumental
-          label(for="_instrumental").pure-radio Instrumental
-          input(type="radio" name="type" value="song")#_song
-          label(for="_song").pure-radio Song
-      .pure-u-1.pure-u-sm-1-2
-        .radio-wrapper
-          p attribute
-          input(type="radio" name="attribute" value="none" checked)#_none
-          label(for="_none").pure-checkbox None
-          input(type="radio" name="attribute" value="comfortable")#_comfortable
-          label(for="_comfortable").pure-checkbox Comfortable
-          input(type="radio" name="attribute" value="dark")#_dark
-          label(for="_dark").pure-radio Dark
-      .pure-u-1
-        .text-wrapper
-          textarea(name="note" placeholder="note")
-      button(type="submit").pure-button.pure-button-primary Put Away!
+  link(rel='stylesheet', href='/stylesheets/styleS.css')
+  body
+    .container-fluid.container-800
+      h1.font-italic Register Music
+      form.form-group(method="post" action="/create")
+        .row
+          .col-sm-6.col-lg-3
+            input(type="text" name="name" required placeholder="name" autocomplete="off").form-control.mb-2
+          .col-sm-6.col-lg-3
+            input(type="text" name="artist" placeholder="artist" autocomplete="off").form-control.mb-2
+          .col-lg-6
+            input(type="text" name="url" size="40" placeholder="url" autocomplete="off").form-control.mb-2
+          .col-sm-5
+            .d-flex.my-2
+              p.mr-2 type
+              .form-check.form-check-inline
+                input(type="radio" name="type" value="instrumental" checked)#_instrumental.form-check-input
+                label(for="_instrumental").form-check-label Instrumental
+                input(type="radio" name="type" value="song")#_song.form-check-input
+                label(for="_song").form-check-label Song
+          .col-sm-7
+            .d-flex.my-2
+              p.mr-2 attribute
+              .form-check.form-check-inline
+                input(type="radio" name="attribute" value="" checked)#_none.form-check-input
+                label(for="_none").form-check-lebel None
+                input(type="radio" name="attribute" value="comfortable")#_comfortable.form-check-input
+                label(for="_comfortable").form-check-label
+                  span.comfortable Comfortable
+                input(type="radio" name="attribute" value="dark")#_dark.form-check-input
+                label(for="_dark").form-check-label
+                  span.dark Dark
+        textarea(name="note" placeholder="note").form-control.mb-4
+        .text-center
+          button(type="submit").btn.btn-outline-dark Put Away!

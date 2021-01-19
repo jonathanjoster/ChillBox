@@ -1,40 +1,42 @@
 extends layout
 
 block content
-  h1 Edit
-  form.pure-form(method="post" action=`/musics/${music.name}?edit=1`)
-    .pure-g
-      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-4
-        .input-wrapper
-          input(type="text" name="name" required value=music.name autocomplete="off").pure-input-rounded
-      .pure-u-1.pure-u-sm-1-2.pure-u-lg-1-4
-        .input-wrapper
-          input(type="text" name="artist" value=music.artist autocomplete="off").pure-input-rounded
-      .pure-u-1.pure-u-lg-1-2
-        .input-wrapper
-          input(type="text" name="url" size="40" value=music.url autocomplete="off").pure-input-rounded
-      .pure-u-1.pure-u-sm-1-2
-        .radio-wrapper
-          p type
-          - var iChecked = (music.type=== 'instrumental');
-          - var sChecked = (music.type=== 'song');
-          input(type="radio" name="type" value="instrumental" checked=iChecked)#_instrumental
-          label(for="_instrumental").pure-radio Instrumental
-          input(type="radio" name="type" value="song" checked=sChecked)#_song
-          label(for="_song").pure-radio Song
-      .pure-u-1.pure-u-sm-1-2
-        .radio-wrapper
-          p attribute
-          - var cChecked = (music.attribute=== 'comfortable');
-          - var dChecked = (music.attribute=== 'dark');
-          - var nChecked = (!cChecked && !dChecked);
-          input(type="radio" name="attribute" value="none" checked=nChecked)#_none
-          label(for="_none").pure-checkbox None
-          input(type="radio" name="attribute" value="comfortable" checked=cChecked)#_comfortable
-          label(for="_comfortable").pure-checkbox Comfortable
-          input(type="radio" name="attribute" value="dark" checked=dChecked)#_dark
-          label(for="_dark").pure-radio Dark
-      .pure-u-1
-        .text-wrapper
-          textarea(name="note" value=music.note)
-      button(type="submit").pure-button.pure-button-primary That's correct!
+  link(rel='stylesheet', href='/stylesheets/styleS.css')
+  body
+    .container-fluid.container-800
+      h1.font-italic Edit
+      form.form-group(method="post" action=`/musics/${music.name}?edit=1`)
+        .row
+          .col-sm-6.col-lg-3
+            input(type="text" name="name" required value=music.name autocomplete="off").form-control.mb-2
+          .col-sm-6.col-lg-3
+            input(type="text" name="artist" value=music.artist autocomplete="off").form-control.mb-2
+          .col-lg-6
+            input(type="text" name="url" size="40" value=music.url autocomplete="off").form-control.mb-2
+          .col-sm-5
+            .d-flex.my-2
+              p type
+              .form-check.form-check-inline
+                - var iChecked = (music.type=== 'instrumental');
+                - var sChecked = (music.type=== 'song');
+                input(type="radio" name="type" value="instrumental" checked=iChecked)#_instrumental.form-check-input.ml-2
+                label(for="_instrumental").form-check-label Instrumental
+                input(type="radio" name="type" value="song" checked=sChecked)#_song.form-check-input.ml-2
+                label(for="_song").form-check-label Song
+          .col-sm-7
+            .d-flex.my-2
+              p attribute
+              .form-check.form-check-inline
+                - var cChecked = (music.attribute=== 'comfortable');
+                - var dChecked = (music.attribute=== 'dark');
+                - var nChecked = (!cChecked && !dChecked);
+                input(type="radio" name="attribute" value="" checked=nChecked)#_none.form-check-input.ml-2
+                label(for="_none").form-check-label None
+                input(type="radio" name="attribute" value="comfortable" checked=cChecked)#_comfortable.form-check-input.ml-2
+                label(for="_comfortable").form-check-label Comfortable
+                input(type="radio" name="attribute" value="dark" checked=dChecked)#_dark.form-check-input.ml-2
+                label(for="_dark").form-check-label Dark
+          
+        textarea(name="note" value=music.note).form-control.mb-4
+        .text-center
+          button(type="submit").pure-button.pure-button-primary.btn.btn-outline-success That's correct!

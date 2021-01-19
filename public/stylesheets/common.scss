@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background:
+      linear-gradient(37deg, rgba(255, 192, 181, 0.8), rgba(255, 192, 181, 0) 70.71%),
+      linear-gradient(-67deg, rgba(15, 51, 93, 0.8), rgba(15, 51, 93, 0) 30.71%),
+      linear-gradient(156deg, rgba(71, 242, 223, 0.8), rgba(101, 222, 223, 0) 70.71%);
+    background-attachment: fixed;
+    a {
+      color: #00B7FF;
+    }
+    .comfortable {
+      font-family: 'Itim', cursive;
+      background-color: #FFB6B8;
+      padding: .1rem .5rem;
+      border-radius: 20px;
+    }
+    .dark {
+      font-family: 'Texturina', serif;
+      color: #eee;
+      background-color: #214968;
+      padding: 0 .5rem .2rem;
+      border-radius: 20px 0 20px;
+    }
+    .container-800 {
+      max-width: 800px;
+    }
+    i {
+      font-size: 26px;
+    }
+    .fa-youtube {
+      color: #CC0202;
+    }
+    .fa-soundcloud {
+      color: #FF5601;
+    }
+  }
+}

@@ -1,27 +1,47 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href="/create") create
-  h3 Music List
-  .pure-g
-    each music in musics
-      .pure-u-1.pure-g.music-wrapper
-        p.pure-u-1.pure-u-sm-1-2.pure-u-md-1-3
-          a(href=`/musics/${music.name}`) #{music.name}
-        p.pure-u-1-2.pure-u-sm-1-2.pure-u-md-1-6 #{music.artist}
-        p.pure-u-1-2.pure-u-sm-1-3.pure-u-md-1-6
-          if music.url.includes('youtube')
-            a(href=music.url) YouTube
-          else if music.url.includes('soundcloud')
-            a(href=music.url) SoundCloud
-          else
-            a(href=music.url) URL
-        p.pure-u-1-2.pure-u-sm-1-3.pure-u-md-1-6 #{music.type}
-        p.pure-u-1-2.pure-u-sm-1-3.pure-u-md-1-6
-          if music.attribute === 'comfortable'
-            span.comfortable #{music.attribute}
-          else if music.attribute
-            span.dark #{music.attribute}
+  link(rel='stylesheet', href='/stylesheets/styleL.css')
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css")
+  body
+    .container-fluid.container-800
+      .d-sm-flex.pt-3
+        .w-50.mx-auto.d-flex.flex-column.justify-content-center.align-items-center.mb-3
+          h1= title
+          p Welcome to #{title}
+          a(href="/create") create
+        .recomendation-wrapper.mx-auto
+          .recomendation
+          
+      each music in musics
+        .music-wrapper.rounded-pill.py-3.px-4.mt-3.text-center
+          .row
+            p.col-12.col-sm-6.col-md-4.my-1
+              a(href=`/musics/${music.name}`) #{music.name}
+            p.col-6.col-md-2.my-1
+              if music.artist
+                | #{music.artist}
+              else
+                | ?
+            p.col-6.col-sm-4.col-md-2.mb-0
+              if music.url.includes('youtube')
+                a(href=music.url)
+                  i.fab.fa-youtube
+              else if music.url.includes('soundcloud')
+                a(href=music.url)
+                  i.fab.fa-soundcloud
+              else
+                a(href=music.url) URL
+            p.col-6.col-sm-4.col-md-2.mb-0
+              if music.type === 'song'
+                i.fas.fa-microphone-alt
+              else
+                i.fas.fa-guitar
+            p.col-6.col-sm-4.col-md-2.my-1
+              if music.attribute === 'comfortable'
+                span.comfortable #{music.attribute}
+              else if music.attribute
+                span.dark #{music.attribute}
+              else
+                | -
 

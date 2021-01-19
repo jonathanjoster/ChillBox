@@ -1,0 +1,20 @@
+@import "common.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.recomendation-wrapper {
+  width: 100%;
+  max-width: 350px;
+}
+.recomendation-wrapper .recomendation {
+  background-color: gold;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.music-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: -2px 0 #fb8817, 2px 0 #e02aff;
+}
