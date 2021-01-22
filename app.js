@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var createRouter = require('./routes/create');
 var musicsRouter = require('./routes/music');
 
-// 4.18
 var Music = require('./models/music');
 Music.sync();
 

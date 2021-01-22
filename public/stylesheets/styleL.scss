@@ -13,12 +13,27 @@
   width: 100%;
   max-width: 350px;
   .recomendation {
-    background-color: gold;
+    background-color: rgba(0, 0, 0, .1);
+    box-shadow: 0 0 150px #fff;
+    // border-radius: 20px;
     width: 100%;
     padding-top: 100%;
+    position: relative;
+    // border-radius: 60% 60% 60% 60%;
+    transform: scale(.8);
+    .reco-wrapper {
+      transform: scale(1.25);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }
 .music-wrapper {
   background: rgba(255, 255, 255, .1);
   box-shadow: -2px 0 #fb8817, 2px 0 #e02aff;
+}
+.border {
+  margin-bottom: 40vh;
+  opacity: 0;
 }

@@ -2,15 +2,16 @@ extends layout
 
 block content
   link(rel='stylesheet', href='/stylesheets/styleS.css')
+  //- script(src="https://www.youtube.com/iframe_api")
   body
-    .container-fluid.container-800
+    .container-fluid.container-800.pt-3
       .data-wrapper.mx-auto
         h1.font-italic #{music.name}
         h4 Artist: 
           span.font-italic #{music.artist}
         .d-flex.justify-content-end.mb-3
-          a(href=`/musics/${music.name}/edit`) Edit
-          a(href="/").ml-3 Home
+          a(href="/").btn.btn-dark.com Home
+          a(href=`/musics/${music.name}/edit`).btn.btn-dark.com.ml-3 Edit
         p Url: 
           - var url = music.url
           if url
@@ -30,7 +31,7 @@ block content
 
       if url.includes('youtube')
         .youtube-wrapper
-          iframe(data-src=url frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+          iframe(width="560" height="315" data-src=url frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
       else if url.includes('soundcloud')
         iframe(width="100%" height="300" data-src=url)
 

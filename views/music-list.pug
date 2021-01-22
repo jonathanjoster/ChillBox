@@ -7,31 +7,17 @@ block content
     .container-fluid.container-800
       .d-sm-flex.pt-3
         .w-50.mx-auto.d-flex.flex-column.justify-content-center.align-items-center.mb-3
-          h1= title
-          p Welcome to #{title}
+          h1 List
           .d-flex.justify-content-center
-            a(href="/musics").btn.btn-dark.com List
+            a(href="/").btn.btn-dark.com Home
             a(href="/create").btn.btn-dark.com.ml-3 Create
-        .recomendation-wrapper.mx-auto
-          .recomendation.rounded
-            .reco-wrapper.w-100.h-100.d-flex.flex-column.justify-content-center.align-items-center
-              h2.mb-0 For You
-              if recomendOne
-                a(href=`/musics/${recomendOne.name}` style="font-size:1.3rem;").mr-2 #{recomendOne.name}
-                if recomendOne.attribute === 'comfortable'
-                  span.comfortable #{recomendOne.attribute}
-                else if recomendOne.attribute === 'dark'
-                  span.dark #{recomendOne.attribute}
-
-      form.form-group(method="post" action="/?search=1")
-        input(type="text" name="word" placeholder="search" autocomplete="off").form-control.my-2
           
       .list
         each music in musics
           .music-wrapper.rounded-pill.text-center.py-3.px-4.mt-3
             .row
               p.col-12.col-sm-6.col-md-4.my-1
-                a(href=`/musics/${music.name}`) #{music.name}
+                a(href=`/musics/${music.name}`).here #{music.name}
               p.col-6.col-md-2.my-1
                 if music.artist
                   | #{music.artist}
@@ -58,8 +44,3 @@ block content
                   span.dark #{music.attribute}
                 else
                   | -
-
-      .border.text-center(data-showed=firstCount)
-        //- button.btn.btn-outline-dark(data-showed="0") show more 5
-
-  script(src="/javascripts/bundle.js")

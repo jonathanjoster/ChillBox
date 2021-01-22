@@ -14,7 +14,7 @@ block content
           .col-lg-6
             input(type="text" name="url" size="40" placeholder="url" autocomplete="off").form-control.mb-2
           .col-sm-5
-            .d-flex.my-2
+            .d-flex.justify-content-center.my-2
               p.mr-2 type
               .form-check.form-check-inline
                 input(type="radio" name="type" value="instrumental" checked)#_instrumental.form-check-input
@@ -22,17 +22,15 @@ block content
                 input(type="radio" name="type" value="song")#_song.form-check-input
                 label(for="_song").form-check-label Song
           .col-sm-7
-            .d-flex.my-2
+            .d-flex.justify-content-center.my-2
               p.mr-2 attribute
               .form-check.form-check-inline
                 input(type="radio" name="attribute" value="" checked)#_none.form-check-input
                 label(for="_none").form-check-lebel None
                 input(type="radio" name="attribute" value="comfortable")#_comfortable.form-check-input
-                label(for="_comfortable").form-check-label
-                  span.comfortable Comfortable
+                label(for="_comfortable").form-check-label.comfortable Comfortable
                 input(type="radio" name="attribute" value="dark")#_dark.form-check-input
-                label(for="_dark").form-check-label
-                  span.dark Dark
+                label(for="_dark").form-check-label.dark Dark
         textarea(name="note" placeholder="note").form-control.mb-4
         .text-center
           button(type="submit").btn.btn-outline-dark Put Away!

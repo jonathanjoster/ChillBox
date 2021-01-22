@@ -3,6 +3,25 @@ const router = express.Router();
 const Music = require('../models/music');
 const dateFormat = require('dateFormat');
 
+router.get('/', (req, res, next) => {
+  Music.findAll({
+    where: {
+    },
+    order: [['updatedAt', 'DESC']],
+  }).then((musics) => {
+    if (musics) {
+      res.render('music-list', {
+        title: `CB:list`,
+        musics: musics
+      });
+    } else {
+      const err = new Error('Not Found');
+      err.status = 404;
+      next(err);
+    }
+  });
+});
+
 router.get('/:name', (req, res, next) => {
   Music.findOne({
     where: {

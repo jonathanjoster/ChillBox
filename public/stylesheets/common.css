@@ -7,15 +7,22 @@
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(37deg, rgba(255, 192, 181, 0.8), rgba(255, 192, 181, 0) 70.71%), linear-gradient(-67deg, rgba(15, 51, 93, 0.8), rgba(15, 51, 93, 0) 30.71%), linear-gradient(156deg, rgba(71, 242, 223, 0.8), rgba(101, 222, 223, 0) 70.71%);
   background-attachment: fixed;
+  font-family: "Fugaz One", "Kosugi", cursive, sans-serif;
 }
 * body a {
   color: #00B7FF;
+}
+* body a:hover {
+  text-decoration: none;
 }
 * body .comfortable {
   font-family: "Itim", cursive;
   background-color: #FFB6B8;
   padding: 0.1rem 0.5rem;
   border-radius: 20px;
+}
+* body .com {
+  font-family: "Itim", cursive;
 }
 * body .dark {
   font-family: "Texturina", serif;

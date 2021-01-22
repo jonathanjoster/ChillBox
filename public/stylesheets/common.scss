@@ -9,14 +9,21 @@
       linear-gradient(-67deg, rgba(15, 51, 93, 0.8), rgba(15, 51, 93, 0) 30.71%),
       linear-gradient(156deg, rgba(71, 242, 223, 0.8), rgba(101, 222, 223, 0) 70.71%);
     background-attachment: fixed;
+    font-family: 'Fugaz One', 'Kosugi', cursive, sans-serif;
     a {
       color: #00B7FF;
+      &:hover {
+        text-decoration: none;
+      }
     }
     .comfortable {
       font-family: 'Itim', cursive;
       background-color: #FFB6B8;
       padding: .1rem .5rem;
       border-radius: 20px;
+    }
+    .com {
+      font-family: 'Itim', cursive;
     }
     .dark {
       font-family: 'Texturina', serif;
