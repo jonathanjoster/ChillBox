@@ -1,6 +1,5 @@
 .vscode/
 node_modules/
-public/stylesheets/style.css
 *.html
 *.css
 test/
