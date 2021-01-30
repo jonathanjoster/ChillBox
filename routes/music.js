@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Music = require('../models/music');
-const dateFormat = require('dateFormat');
+const dateFormat = require('dateformat');
 
 // show all list
 router.get('/', (req, res, next) => {
