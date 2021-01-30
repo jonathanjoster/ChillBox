@@ -3,10 +3,9 @@ const router = express.Router();
 const Music = require('../models/music');
 const dateFormat = require('dateFormat');
 
+// show all list
 router.get('/', (req, res, next) => {
   Music.findAll({
-    where: {
-    },
     order: [['updatedAt', 'DESC']],
   }).then((musics) => {
     if (musics) {
@@ -22,6 +21,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
+// show detail page
 router.get('/:name', (req, res, next) => {
   Music.findOne({
     where: {
@@ -41,6 +41,7 @@ router.get('/:name', (req, res, next) => {
   });
 });
 
+// show edit page
 router.get('/:name/edit', (req, res, next) => {
   Music.findOne({
     where: {
@@ -60,8 +61,25 @@ router.get('/:name/edit', (req, res, next) => {
   });
 });
 
+// update / delete data
 router.post('/:name', (req, res, next) => {
-  console.log(req.params.name)
+  if (req.body.note === 'DELETE') {
+    Music.findOne({
+      where: {
+        name: req.body.name
+      }
+    }).then(music => {
+      if (music) {
+        music.destroy();
+        res.redirect('/');
+      } else {
+        const err = new Error('Not Found');
+        err.status = 404;
+        next(err);
+      }
+    });
+    return;
+  }
   Music.findOne({
     where: {
       name: req.params.name
@@ -69,7 +87,6 @@ router.post('/:name', (req, res, next) => {
   }).then((music) => {
     if (music && parseInt(req.query.edit) === 1) {
       const updatedAt = dateFormat(new Date(), 'mmm dd yyyy, HH:MM:ss');
-      console.log(req.body.url.includes('https'))
       const url = req.body.url.includes('https') ?
         req.body.url :
         'https://www.' + req.body.url;
@@ -83,7 +100,7 @@ router.post('/:name', (req, res, next) => {
         note: req.body.note
       }).then(music => {
         Music.bulkCreate(music).then(() => {
-          res.redirect('/musics/' + music.name);
+          res.redirect('/music/' + music.name);
         });
       });
     } else {

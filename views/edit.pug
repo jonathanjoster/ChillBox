@@ -5,14 +5,14 @@ block content
   body
     .container-fluid.container-800
       h1.font-italic Edit
-      form.form-group(method="post" action=`/musics/${music.name}?edit=1`)
+      form.form-group(method="post" action=`/music/${music.name}?edit=1`)
         .row
           .col-sm-6.col-lg-3
-            input(type="text" name="name" required value=music.name autocomplete="off").form-control.mb-2
+            input(type="text" name="name" required value=music.name placeholder="name" autocomplete="off").form-control.mb-2
           .col-sm-6.col-lg-3
-            input(type="text" name="artist" value=music.artist autocomplete="off").form-control.mb-2
+            input(type="text" name="artist" value=music.artist placeholder="artist" autocomplete="off").form-control.mb-2
           .col-lg-6
-            input(type="text" name="url" size="40" value=music.url autocomplete="off").form-control.mb-2
+            input(type="text" name="url" size="40" value=music.url placeholder="url" autocomplete="off").form-control.mb-2
           .col-sm-5
             .d-flex.my-2
               p type
@@ -37,6 +37,7 @@ block content
                 input(type="radio" name="attribute" value="dark" checked=dChecked)#_dark.form-check-input.ml-2
                 label(for="_dark").form-check-label.dark Dark
           
-        textarea(name="note" value=music.note).form-control.mb-4
+        textarea(name="note" placeholder="note").form-control.mb-4 #{music.note}
+        
         .text-center
           button(type="submit").pure-button.pure-button-primary.btn.btn-outline-dark That's correct!

@@ -11,7 +11,7 @@ block content
           span.font-italic #{music.artist}
         .d-flex.justify-content-end.mb-3
           a(href="/").btn.btn-dark.com Home
-          a(href=`/musics/${music.name}/edit`).btn.btn-dark.com.ml-3 Edit
+          a(href=`/music/${music.name}/edit`).btn.btn-dark.com.ml-3 Edit
         p Url: 
           - var url = music.url
           if url
@@ -35,4 +35,4 @@ block content
       else if url.includes('soundcloud')
         iframe(width="100%" height="300" data-src=url)
 
-      script(src="/javascripts/script.js")
+      script(src="/javascripts/showIframe.js")

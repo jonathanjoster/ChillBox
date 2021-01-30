@@ -1,19 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Music = require('../models/music');
+const Op = require('sequelize').Op;
 
-/* GET home page. */
+// show home page
 router.get('/', function(req, res, next) {
   const firstCount = 5;
   var recomendOne;
   Music.count().then(c => {
     const r = Math.floor(Math.random()*(c-1));
-    console.log('r======>', r);
     Music.findOne({
       offset: r
     }).then(recomend => {
       recomendOne = recomend;
-      console.log(recomendOne)
     });
   }).then(() => {
     Music.findAll({
@@ -30,21 +29,44 @@ router.get('/', function(req, res, next) {
   });
 })
 
+// show more / word search
 router.post('/', function(req, res, next) {
   if (req.query.showed) {
+    // show more
     const offset = parseInt(req.query.showed, 10);
     Music.findAll({
-      where: {
-        // name: 'hoge'
-      },
       order: [['updatedAt', 'DESC']],
       limit: 1,
       offset: offset
     }).then(musics => {
       res.send(musics);
     });
-  } else if (req.query.search === 1) {
-    
+  } else if (req.query.search === '1') {
+    // word search
+    const word = req.body.word;
+    Music.findAll({
+      where: {
+        [Op.or]: {
+          name: {
+            [Op.iLike]: '%'+word+'%'
+          },
+          artist: {
+            [Op.iLike]: '%'+word+'%'
+          },
+          type: word,
+          attribute: word,
+          note: {
+            [Op.iLike]: '%'+word+'%'
+          }
+        }
+      },
+      order: [['updatedAt', 'DESC']],
+    }).then(musics => {
+      res.render('music-list', {
+        title: `CB:${word}`,
+        musics: musics
+      });
+    });
   }
 });
 

@@ -1,8 +1,8 @@
 'use strict';
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-  'postgres://postgres:postgres@localhost/cb'
-);
+  process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/cb'
+ );
 
 module.exports = {
   database: sequelize,

@@ -2,6 +2,7 @@
 
 function youtube_defer() {
   var iframe = document.querySelector('iframe');
+  if (!iframe) { return; }
   var url = iframe.getAttribute('data-src');
 
   if (url.includes('youtube')) {
@@ -10,10 +11,8 @@ function youtube_defer() {
     iframe.setAttribute('src', embedUrl);
   } else if (url.includes('soundcloud')) {
     var _embedUrl = 'https://w.soundcloud.com/player/?visual=true&url=' + url;
-
     iframe.setAttribute('src', _embedUrl);
   }
 }
-
 
 window.addEventListener('load', youtube_defer);

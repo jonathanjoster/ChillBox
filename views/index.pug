@@ -5,33 +5,34 @@ block content
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css")
   body
     .container-fluid.container-800
-      .d-sm-flex.pt-3
-        .w-50.mx-auto.d-flex.flex-column.justify-content-center.align-items-center.mb-3
+      .d-sm-flex
+        .w-50.mx-auto.d-flex.flex-column.justify-content-center.align-items-center.mt-5.mt-sm-0
           h1= title
           p Welcome to #{title}
           .d-flex.justify-content-center
-            a(href="/musics").btn.btn-dark.com List
+            a(href="/music").btn.btn-dark.com List
             a(href="/create").btn.btn-dark.com.ml-3 Create
         .recomendation-wrapper.mx-auto
           .recomendation.rounded
             .reco-wrapper.w-100.h-100.d-flex.flex-column.justify-content-center.align-items-center
               h2.mb-0 For You
               if recomendOne
-                a(href=`/musics/${recomendOne.name}` style="font-size:1.3rem;").mr-2 #{recomendOne.name}
+                a(href=`/music/${recomendOne.name}` style="font-size:1.3rem;").mr-2 #{recomendOne.name}
                 if recomendOne.attribute === 'comfortable'
-                  span.comfortable #{recomendOne.attribute}
+                  a(href="/?search=1" onclick="sendPost(event, 'comfortable')").comfortable #{recomendOne.attribute}
                 else if recomendOne.attribute === 'dark'
-                  span.dark #{recomendOne.attribute}
+                  a(href="/?search=1" onclick="sendPost(event, 'dark')").dark #{recomendOne.attribute}
 
-      form.form-group(method="post" action="/?search=1")
-        input(type="text" name="word" placeholder="search" autocomplete="off").form-control.my-2
+      form(method="post" action="/?search=1").form-group.d-flex.mx-auto.w-100
+        input(type="text" name="word" placeholder="search..." autocomplete="off").form-control
+        button(type="submit").btn.btn-dark.ml-2 Search
           
       .list
         each music in musics
           .music-wrapper.rounded-pill.text-center.py-3.px-4.mt-3
             .row
               p.col-12.col-sm-6.col-md-4.my-1
-                a(href=`/musics/${music.name}`) #{music.name}
+                a(href=`/music/${music.name}`) #{music.name}
               p.col-6.col-md-2.my-1
                 if music.artist
                   | #{music.artist}
@@ -44,8 +45,10 @@ block content
                 else if music.url.includes('soundcloud')
                   a(href=music.url)
                     i.fab.fa-soundcloud
-                else
+                else if music.url
                   a(href=music.url) URL
+                else
+                  | -
               p.col-6.col-sm-4.col-md-2.mb-0
                 if music.type === 'song'
                   i.fas.fa-microphone-alt
@@ -53,13 +56,13 @@ block content
                   i.fas.fa-guitar
               p.col-6.col-sm-4.col-md-2.my-1
                 if music.attribute === 'comfortable'
-                  span.comfortable #{music.attribute}
-                else if music.attribute
-                  span.dark #{music.attribute}
+                  a(href="/?search=1" onclick="sendPost(event, 'comfortable')").comfortable #{music.attribute}
+                else if music.attribute === 'dark'
+                  a(href="/?search=1" onclick="sendPost(event, 'dark')").dark #{music.attribute}
                 else
                   | -
 
       .border.text-center(data-showed=firstCount)
-        //- button.btn.btn-outline-dark(data-showed="0") show more 5
 
   script(src="/javascripts/bundle.js")
+  script(src="/javascripts/postWithA.js")

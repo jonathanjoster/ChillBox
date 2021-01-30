@@ -144,9 +144,9 @@ function showMore() {
         var attribute = '-';
 
         if (music.attribute === 'comfortable') {
-          attribute = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<span class="comfortable">').text('comfortable');
+          attribute = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<a href="/?search=1" onclick="sendPost(event, \'comfortable\')" class="comfortable">').text('comfortable');
         } else if (music.attribute === 'dark') {
-          attribute = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<span class="dark">').text('dark');
+          attribute = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<a href="/?search=1" onclick="sendPost(event, \'dark\')" class="dark">').text('dark');
         }
 
         var m = {
@@ -175,7 +175,7 @@ function showMore() {
 
 
 function createNewMusic(music) {
-  return jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="music-wrapper rounded-pill text-center py-3 px-4 mt-3">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="row">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-12 col-sm-6 col-md-4 my-1">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a href=\"/musics/".concat(music.name, "\"></a>")).text(music.name))).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-md-2 my-1">').text(music.artist)).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-sm-4 col-md-2 mb-0">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a href=\"".concat(music.url, "\"></a>")).html(music.urlContent))).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-sm-4 col-md-2 mb-0">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<i class=\"fas fa-".concat(music.typeName, "\"></a>")))).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-sm-4 col-md-2 my-1">').append(music.attribute)));
+  return jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="music-wrapper rounded-pill text-center py-3 px-4 mt-3">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="row">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-12 col-sm-6 col-md-4 my-1">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a href=\"/music/".concat(music.name, "\"></a>")).text(music.name))).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-md-2 my-1">').text(music.artist)).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-sm-4 col-md-2 mb-0">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<a href=\"".concat(music.url, "\"></a>")).html(music.urlContent))).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-sm-4 col-md-2 mb-0">').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()("<i class=\"fas fa-".concat(music.typeName, "\"></a>")))).append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="col-6 col-sm-4 col-md-2 my-1">').append(music.attribute)));
 }
 
 var canScroll = true;

@@ -17,7 +17,7 @@ block content
           .music-wrapper.rounded-pill.text-center.py-3.px-4.mt-3
             .row
               p.col-12.col-sm-6.col-md-4.my-1
-                a(href=`/musics/${music.name}`).here #{music.name}
+                a(href=`/music/${music.name}`).here #{music.name}
               p.col-6.col-md-2.my-1
                 if music.artist
                   | #{music.artist}
@@ -30,8 +30,10 @@ block content
                 else if music.url.includes('soundcloud')
                   a(href=music.url)
                     i.fab.fa-soundcloud
-                else
+                else if music.url
                   a(href=music.url) URL
+                else
+                  | -
               p.col-6.col-sm-4.col-md-2.mb-0
                 if music.type === 'song'
                   i.fas.fa-microphone-alt
@@ -44,3 +46,5 @@ block content
                   span.dark #{music.attribute}
                 else
                   | -
+
+        p.text-center.mt-4 That's all.

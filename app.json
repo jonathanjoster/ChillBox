@@ -1,0 +1,7 @@
+{
+  "name": "Chill Box",
+  "description": "music register",
+  "logo": "",
+  "keywords": ["node"],
+  "image": "heroku/nodejs"
+}

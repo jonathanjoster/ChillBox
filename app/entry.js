@@ -34,9 +34,9 @@ function showMore() {
 
       let attribute = '-';
       if (music.attribute === 'comfortable') {
-        attribute = $('<span class="comfortable">').text('comfortable');
+        attribute = $('<a href="/?search=1" onclick="sendPost(event, \'comfortable\')" class="comfortable">').text('comfortable');
       } else if (music.attribute === 'dark') {
-        attribute = $('<span class="dark">').text('dark');
+        attribute = $('<a href="/?search=1" onclick="sendPost(event, \'dark\')" class="dark">').text('dark');
       }
 
       const m = {
@@ -62,7 +62,7 @@ function createNewMusic(music) {
   return $('<div class="music-wrapper rounded-pill text-center py-3 px-4 mt-3">', ).append(
     $('<div class="row">').append(
       $('<p class="col-12 col-sm-6 col-md-4 my-1">').append(
-        $(`<a href="/musics/${music.name}"></a>`).text(music.name)
+        $(`<a href="/music/${music.name}"></a>`).text(music.name)
       )
     ).append(
       $('<p class="col-6 col-md-2 my-1">').text(music.artist)
