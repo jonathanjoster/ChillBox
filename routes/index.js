@@ -3,7 +3,10 @@ const router = express.Router();
 const Music = require('../models/music');
 const Op = require('sequelize').Op;
 
-// show home page
+/**
+ * show home page
+ * ホームページを表示する
+ */
 router.get('/', function(req, res, next) {
   const firstCount = 5;
   var recomendOne;
@@ -29,7 +32,10 @@ router.get('/', function(req, res, next) {
   });
 })
 
-// show more / word search
+/**
+ * show more / word search
+ * 追加表示及び単語検索処理
+ */
 router.post('/', function(req, res, next) {
   if (req.query.showed) {
     // show more

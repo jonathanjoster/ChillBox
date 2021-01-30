@@ -3,12 +3,18 @@ const router = express.Router();
 const Music = require('../models/music');
 const dateFormat = require('dateformat');
 
-// show create page
+/**
+ * show create page
+ * 作成ページを表示する
+ */
 router.get('/', (req, res, next) => {
   res.render('create', { title: 'CB:Create' });
 });
 
-// create
+/**
+ * create
+ * 作成処理
+ */
 router.post('/', (req, res, next) => {
   const updatedAt = dateFormat(new Date(), 'mmm dd yyyy, HH:MM:ss');
   const name = req.body.name.replace('?', '_').replace('&', '_');

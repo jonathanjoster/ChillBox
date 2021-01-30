@@ -3,7 +3,10 @@ const router = express.Router();
 const Music = require('../models/music');
 const dateFormat = require('dateformat');
 
-// show all list
+/**
+ * show all list
+ * 曲一覧のページを表示する
+ */
 router.get('/', (req, res, next) => {
   Music.findAll({
     order: [['updatedAt', 'DESC']],
@@ -21,7 +24,10 @@ router.get('/', (req, res, next) => {
   });
 });
 
-// show detail page
+/**
+ * show a specific page
+ * 特定の一曲のページを表示する
+ */
 router.get('/:name', (req, res, next) => {
   Music.findOne({
     where: {
@@ -41,7 +47,10 @@ router.get('/:name', (req, res, next) => {
   });
 });
 
-// show edit page
+/**
+ * show edit page
+ * 編集ページを表示する
+ */
 router.get('/:name/edit', (req, res, next) => {
   Music.findOne({
     where: {
@@ -61,9 +70,13 @@ router.get('/:name/edit', (req, res, next) => {
   });
 });
 
-// update / delete data
+/**
+ * update / delete data
+ * 編集または削除処理
+ */
 router.post('/:name', (req, res, next) => {
   if (req.body.note === 'DELETE') {
+    // delete
     Music.findOne({
       where: {
         name: req.body.name
@@ -80,6 +93,7 @@ router.post('/:name', (req, res, next) => {
     });
     return;
   }
+  // edit
   Music.findOne({
     where: {
       name: req.params.name
