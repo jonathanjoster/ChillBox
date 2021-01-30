@@ -11,8 +11,9 @@ router.get('/', (req, res, next) => {
 // create
 router.post('/', (req, res, next) => {
   const updatedAt = dateFormat(new Date(), 'mmm dd yyyy, HH:MM:ss');
+  const name = req.body.name.replace('?', '_').replace('&', '_');
   Music.create({
-    name: req.body.name || 'NONAME',
+    name: name,
     artist: req.body.artist,
     url: req.body.url,
     type: req.body.type,

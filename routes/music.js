@@ -87,11 +87,9 @@ router.post('/:name', (req, res, next) => {
   }).then((music) => {
     if (music && parseInt(req.query.edit) === 1) {
       const updatedAt = dateFormat(new Date(), 'mmm dd yyyy, HH:MM:ss');
-      const url = req.body.url.includes('https') ?
-        req.body.url :
-        'https://www.' + req.body.url;
+      const name = req.body.name.replace('?', '_').replace('&', '_');
       music.update({
-        name: req.body.name,
+        name: name,
         artist: req.body.artist,
         url: url,
         type: req.body.type,

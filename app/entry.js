@@ -11,8 +11,8 @@ function showMore() {
 
   $.post(`/?showed=${showedCount}`, musics => {
     if (musics.length === 0) {
-      $('.list').append($('<p class="text-center mt-3">').text('That\'s all.'));
       canScroll = false;
+      return;
     }
     for (const music of musics) {
       let urlContent = 'URL';

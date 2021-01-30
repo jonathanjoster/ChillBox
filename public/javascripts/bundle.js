@@ -111,8 +111,8 @@ function showMore() {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('.border').data('showed', showedCount + 1);
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.post("/?showed=".concat(showedCount), function (musics) {
     if (musics.length === 0) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.list').append(jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p class="text-center mt-3">').text('That\'s all.'));
       canScroll = false;
+      return;
     }
 
     var _iterator = _createForOfIteratorHelper(musics),
