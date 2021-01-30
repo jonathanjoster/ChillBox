@@ -91,7 +91,7 @@ router.post('/:name', (req, res, next) => {
       music.update({
         name: name,
         artist: req.body.artist,
-        url: url,
+        url: req.body.url,
         type: req.body.type,
         attribute: req.body.attribute,
         updatedAt: updatedAt,
